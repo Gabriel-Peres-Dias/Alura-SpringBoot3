@@ -34,4 +34,10 @@ public class MedicoController {
         //método alterado para Page, e sem necessidade do .stream e .toList(), pois a Page já faz isso
         return repository.findAll(paginacao).map(DadosListagemMedico::new);
     }
+
+    @PutMapping
+    @Transactional
+    public void atualizar(@RequestBody @Valid DadosCadastroMedico dados) {
+
+    }
 }
