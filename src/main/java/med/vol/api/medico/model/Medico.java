@@ -3,6 +3,7 @@ package med.vol.api.medico.model;
 import jakarta.persistence.*;
 import lombok.*;
 import med.vol.api.endereco.Endereco;
+import med.vol.api.medico.dto.DadosAtualizacaoMedico;
 import med.vol.api.medico.dto.DadosCadastroMedico;
 import med.vol.api.medico.enuns.Especialidade;
 
@@ -36,5 +37,11 @@ public class Medico {
         this.crm = dados.crm();
         this.especialidade = dados.especialidade();
         this.endereco = new Endereco(dados.endereco());
+    }
+
+    public void atualizarInformacoes(DadosAtualizacaoMedico dados) {
+        if (dados.nome() != null) this.nome = dados.nome();
+        if (dados.telefone() != null) this.telefone = dados.telefone();
+        if (dados.endereco() != null) this.endereco.atualizarInformacoesEndereco(dados.endereco());
     }
 }
