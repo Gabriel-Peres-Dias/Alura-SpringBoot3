@@ -6,6 +6,8 @@ import med.vol.api.medico.dto.DadosListagemMedico;
 import med.vol.api.medico.model.Medico;
 import med.vol.api.medico.repository.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,8 +27,9 @@ public class MedicoController {
     }
 
     @GetMapping
-    public List<DadosListagemMedico> listar() {
+    public Page<DadosListagemMedico> listar(Pageable paginacao) {
         //parser de entidade para dadosListagemMedico. Sendo necessário criar um construtor no dto que receba a entidade
-        return repository.findAll().stream().map(DadosListagemMedico::new).toList();
+        //método alterado para Page, e sem necessidade do .stream e .toList(), pois a Page já faz isso
+        return repository.findAll(paginacao).map(DadosListagemMedico::new);
     }
 }
