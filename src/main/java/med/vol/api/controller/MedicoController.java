@@ -1,6 +1,7 @@
 package med.vol.api.controller;
 
 import jakarta.validation.Valid;
+import med.vol.api.medico.dto.DadosAtualizacaoMedico;
 import med.vol.api.medico.dto.DadosCadastroMedico;
 import med.vol.api.medico.dto.DadosListagemMedico;
 import med.vol.api.medico.model.Medico;
@@ -37,7 +38,9 @@ public class MedicoController {
 
     @PutMapping
     @Transactional
-    public void atualizar(@RequestBody @Valid DadosCadastroMedico dados) {
-
+    //como temos o @traansactional, tods o trecho do código vai rodar dentro de uuma transação, o jpa percebe que teve alteração e já atualiza
+    public void atualizar(@RequestBody @Valid DadosAtualizacaoMedico dados) {
+        var medico = repository.getReferenceById(dados.id());
+        medico.atualizarInformacoes(dados);
     }
 }
