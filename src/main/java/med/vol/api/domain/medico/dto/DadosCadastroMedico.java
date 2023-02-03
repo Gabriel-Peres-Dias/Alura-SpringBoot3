@@ -11,22 +11,22 @@ import med.vol.api.domain.medico.enuns.Especialidade;
 //Utilizando as records do java, passando somente os atributos na classe
 public record DadosCadastroMedico(
 
-        @NotBlank
+        @NotBlank(message = "O campo Nome é obrigatório!")
         String nome,
-        @NotBlank
-        @Email
+        @NotBlank(message = "O campo E-mail é obrigatório!")
+        @Email(message = "Formato inválido!")
         String email,
-        @NotBlank
+        @NotBlank(message = "O campo Telefone é obrigatório!")
         String telefone,
         //regex = \\d = digitos, {4,6} = de 4 a 6 digitos
-        @NotBlank
-        @Pattern(regexp = "\\d{4,6}")
+        @NotBlank(message = "O campo CRM é obrigatório!")
+        @Pattern(regexp = "\\d{4,6}", message = "Formato inválido!")
         String crm,
         //notBlanck para campos que forem string, e notblank chega se é null também
-        @NotNull
+        @NotNull(message = "O campo Especialidade é obrigatório!")
         Especialidade especialidade,
         //valid avisa que dentro desse dto também terá outras validações, fazendo que o bean também cheque o mesmo
-        @NotNull
+        @NotNull(message = "O campo Endereço é obrigatório!")
         @Valid
         DadosEndereco endereco) {
 }
