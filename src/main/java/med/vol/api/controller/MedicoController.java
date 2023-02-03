@@ -49,7 +49,7 @@ public class MedicoController {
 
     @PutMapping
     @Transactional
-    //como temos o @traansactional, tods o trecho do código vai rodar dentro de uuma transação, o jpa percebe que teve alteração e já atualiza
+    //como temos o @transactional, tods o trecho do código vai rodar dentro de uuma transação, o jpa percebe que teve alteração e já atualiza
     public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoMedico dados) {
         var medico = repository.getReferenceById(dados.id());
         medico.atualizarInformacoes(dados);
