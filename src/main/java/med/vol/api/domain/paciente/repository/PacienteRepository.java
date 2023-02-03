@@ -1,11 +1,9 @@
-package med.vol.api.paciente.repository;
+package med.vol.api.domain.paciente.repository;
 
-import med.vol.api.paciente.model.Paciente;
+import med.vol.api.domain.paciente.model.Paciente;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.Optional;
 
 public interface PacienteRepository extends JpaRepository<Paciente,Long> {
 

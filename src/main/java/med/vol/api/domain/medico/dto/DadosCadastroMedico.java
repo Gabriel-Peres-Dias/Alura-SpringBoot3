@@ -1,12 +1,12 @@
-package med.vol.api.medico.dto;
+package med.vol.api.domain.medico.dto;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import med.vol.api.endereco.DadosEndereco;
-import med.vol.api.medico.enuns.Especialidade;
+import med.vol.api.domain.endereco.DadosEndereco;
+import med.vol.api.domain.medico.enuns.Especialidade;
 
 //Utilizando as records do java, passando somente os atributos na classe
 public record DadosCadastroMedico(
