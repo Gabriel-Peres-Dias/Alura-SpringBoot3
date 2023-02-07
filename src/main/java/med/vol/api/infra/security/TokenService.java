@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import med.vol.api.domain.usuario.Usuario;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -13,10 +14,16 @@ import java.time.ZoneOffset;
 @Service
 public class TokenService {
 
+    /* o value tem que ser do sprint, e dentro dos parênteses eu passo o nome da variavel que criamos no
+    application.properties  -- usamos o ${} para dizer para o spring ler uma variavel de ambiente e usamos
+    o : para ser o default caso não encontre a variavel de ambiente */
+    @Value("api.securitu.token.secret")
+    private String secret;
+
     public String gerarToken(Usuario usuario) {
         try {
             //algoritimo para gerar a assinatura digital do token
-            var algoritmo = Algorithm.HMAC256("12345678");
+            var algoritmo = Algorithm.HMAC256(secret);
             return JWT.create()
                     //api responsavel pela geração do token - dona
                     .withIssuer("API Voll.med")
