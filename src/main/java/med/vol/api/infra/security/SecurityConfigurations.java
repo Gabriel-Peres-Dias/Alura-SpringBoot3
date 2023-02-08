@@ -2,6 +2,7 @@ package med.vol.api.infra.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,10 +19,15 @@ public class SecurityConfigurations {
 
     //csrf = cross-site request forgery = como vamos usar tokens não precisamos dele pq ele o token já nos protege de ataques
     // SessionCreationPolicy.STATELESS = desabilitamos o processo de autenticação do spring do formulario, e como é api rest e rest é stateless
+    // RequestMatchers = verbo http + url + permitAll(não preciso chegar se está previamente "logado")
+    //anyRequest authenticated = todas as outras requisições precisam estar "logadas"
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and().authorizeHttpRequests()
+                .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                .anyRequest().authenticated()
                 .and().build();
     }
 
