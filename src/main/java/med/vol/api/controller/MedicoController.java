@@ -29,17 +29,13 @@ public class MedicoController {
     public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroMedico dados, UriComponentsBuilder uriBuilder) {
         var medico = new Medico(dados);
         repository.save(medico);
-        // O status 201 - Created tem suas regrinhas, e essa é uma das coias que torna a apiRestfull
         var uri = uriBuilder.path("/medicos/{id}").buildAndExpand(medico.getId()).toUri();
 
         return ResponseEntity.created(uri).body(new DadosDetalhamentoMedico(medico));
     }
 
     @GetMapping
-    //PageableDefault = Ao invés de usarmos a url, definimos o default da paginação, requisições com parametro na url sobrescrevem
     public ResponseEntity<Page<DadosListagemMedico>> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
-        //parser de entidade para dadosListagemMedico. Sendo necessário criar um construtor no dto que receba a entidade
-        //método alterado para Page, e sem necessidade do .stream e .toList(), pois a Page já faz isso
         var page = repository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
 
         return ResponseEntity.ok(page);
@@ -47,7 +43,6 @@ public class MedicoController {
 
     @PutMapping
     @Transactional
-    //como temos o @transactional, tods o trecho do código vai rodar dentro de uuma transação, o jpa percebe que teve alteração e já atualiza
     public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoMedico dados) {
         var medico = repository.getReferenceById(dados.id());
         medico.atualizarInformacoes(dados);

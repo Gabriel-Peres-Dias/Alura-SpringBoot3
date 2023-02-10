@@ -17,7 +17,6 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-//criar o equals e hash encima do id, e não de todos os atributos
 @EqualsAndHashCode(of = "id")
 public class Usuario implements UserDetails {
 
@@ -27,7 +26,6 @@ public class Usuario implements UserDetails {
     private String login;
     private String senha;
 
-    // para caso quisermos criar roles devolvemos aqui uma collection da classe que representará isso
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_USER"));

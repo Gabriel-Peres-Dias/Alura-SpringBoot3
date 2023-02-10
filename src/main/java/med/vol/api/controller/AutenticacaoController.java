@@ -30,7 +30,6 @@ public class AutenticacaoController {
         var authentication = manager.authenticate(authenticationToken);
 
         var tokenJWT = tokenService.gerarToken((Usuario) authentication.getPrincipal());
-        //get principal seria a pessoa que está logando
         return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
     }
 }

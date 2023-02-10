@@ -12,7 +12,6 @@ import med.vol.api.domain.medico.enuns.Especialidade;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-//criar o equals e hash encima do id, e não de todos os atributos
 @EqualsAndHashCode(of = "id")
 public class Medico {
 

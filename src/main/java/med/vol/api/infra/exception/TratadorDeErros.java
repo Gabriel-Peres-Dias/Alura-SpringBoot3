@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.sql.SQLIntegrityConstraintViolationException;
 
-//anotação para os tipos de classe que lidam com erros
 @RestControllerAdvice
 public class TratadorDeErros {
 
