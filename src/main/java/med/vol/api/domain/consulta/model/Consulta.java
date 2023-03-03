@@ -1,10 +1,11 @@
-package med.vol.api.domain.consulta;
+package med.vol.api.domain.consulta.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import med.vol.api.domain.consulta.enuns.MotivoCancelamento;
 import med.vol.api.domain.medico.model.Medico;
 import med.vol.api.domain.paciente.model.Paciente;
 

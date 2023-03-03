@@ -1,4 +1,4 @@
-package med.vol.api.domain.usuario;
+package med.vol.api.domain.usuario.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

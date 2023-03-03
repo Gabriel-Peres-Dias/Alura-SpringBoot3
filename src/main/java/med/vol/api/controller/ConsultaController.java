@@ -3,7 +3,6 @@ package med.vol.api.controller;
 import jakarta.validation.Valid;
 import med.vol.api.domain.consulta.dto.DadosAgendamentoConsulta;
 import med.vol.api.domain.consulta.dto.DadosCancelamentoConsulta;
-import med.vol.api.domain.consulta.dto.DadosDetalhamentoConsulta;
 import med.vol.api.domain.consulta.service.ConsultaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +19,8 @@ public class ConsultaController {
     @PostMapping
     @Transactional
     public ResponseEntity agendar(@RequestBody @Valid DadosAgendamentoConsulta dados) {
-        service.agendar(dados);
-        return ResponseEntity.ok(new DadosDetalhamentoConsulta(null, null, null, null));
+        var dto = service.agendar(dados);
+        return ResponseEntity.ok(dto);
     }
 
     @DeleteMapping

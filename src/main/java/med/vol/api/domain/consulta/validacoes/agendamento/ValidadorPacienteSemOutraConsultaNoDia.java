@@ -1,6 +1,6 @@
-package med.vol.api.domain.consulta.validacoes;
+package med.vol.api.domain.consulta.validacoes.agendamento;
 
-import med.vol.api.domain.ValidacaoException;
+import med.vol.api.infra.exception.ValidacaoException;
 import med.vol.api.domain.consulta.dto.DadosAgendamentoConsulta;
 import med.vol.api.domain.consulta.repository.ConsultaRepository;
 import org.springframework.beans.factory.annotation.Autowired;

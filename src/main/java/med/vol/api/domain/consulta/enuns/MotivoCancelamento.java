@@ -1,4 +1,4 @@
-package med.vol.api.domain.consulta;
+package med.vol.api.domain.consulta.enuns;
 
 public enum MotivoCancelamento {
     DESISTENCIA,

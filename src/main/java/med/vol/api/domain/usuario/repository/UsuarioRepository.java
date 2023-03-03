@@ -1,6 +1,6 @@
 package med.vol.api.domain.usuario.repository;
 
-import med.vol.api.domain.usuario.Usuario;
+import med.vol.api.domain.usuario.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 
